@@ -31,13 +31,19 @@ CREATE TABLE IF NOT EXISTS electronics (
 );
 
 INSERT INTO food (name, price, description, quantity) 
-VALUES  ('apple', 2.00, 'Best apples in the world', 50);
+VALUES  ('Apple', 2.00, 'Best apples in the world', 50),
+('Banana', 3.00, 'Best bananas ever made', 30),
+('Orange', 2.50, 'Local organic oranges', 40);
 
 INSERT INTO toys (name, price, description, quantity) 
-VALUES  ('Toy Car', 40.00, 'Toy racecar', 10);
+VALUES  ('Toy Car', 40.00, 'Toy racecar', 10),
+('Legos', 50.00, 'Harry potter house lego set', 2),
+('Stuffed animal', 25.00, 'Soft fluffy bear stuffed animal', 5);
 
 INSERT INTO electronics (name, price, description, quantity) 
-VALUES  ('Xbox', 300.00, 'Xbox series S - NEW', 5);
+VALUES  ('Xbox', 300.00, 'Xbox series S - NEW', 5),
+('Playstation', 400.00, 'Playstation 5 - NEW', 3),
+('Drone', 600.00, 'Flys 1000ft in the air - use with percaution', 1);
 `;
 
 const ROLE_NAME = process.env.ROLE_NAME;

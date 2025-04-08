@@ -9,7 +9,9 @@
     <h1>Welcome to my general store!</h1>
     <% categories.forEach((category) => { %>
     <h2><%= category.table_name %></h2>
-    <button>Open <%= category.table_name %></button>
+    <a href="/<%= category.table_name %>"
+      ><button>Open <%= category.table_name %></button></a
+    >
     <% }) %>
   </body>
 </html>

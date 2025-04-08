@@ -1,5 +1,9 @@
-function showFood(req, res) {
-  res.render("food");
+const db = require("../db/queries");
+
+async function showFood(req, res) {
+  const food = await db.getAllItems("food");
+  console.log(food);
+  res.render("food", { food: food });
 }
 
 function addItem() {}
@@ -12,4 +16,7 @@ function deleteCategory() {
 
 module.exports = {
   showFood,
+  addItem,
+  deleteItem,
+  deleteCategory,
 };
