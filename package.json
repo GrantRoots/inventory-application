@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node db/populatedb.js"
+  },
   "dependencies": {
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",

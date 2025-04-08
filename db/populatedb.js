@@ -3,6 +3,8 @@
 require("dotenv").config();
 const { Client } = require("pg");
 
+console.log("Db populated...");
+
 const SQL = `
 CREATE TABLE IF NOT EXISTS food (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -42,7 +44,7 @@ const ROLE_NAME = process.env.ROLE_NAME;
 const ROLE_PASSWORD = process.env.ROLE_PASSWORD;
 async function main() {
   const client = new Client({
-    connectionString: `postgresql://${ROLE_NAME}:${ROLE_PASSWORD}@localhost:5432/messages`,
+    connectionString: `postgresql://${ROLE_NAME}:${ROLE_PASSWORD}@localhost:5432/inventory`,
   });
   await client.connect();
   await client.query(SQL);

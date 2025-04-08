@@ -6,7 +6,9 @@ function addItem() {}
 
 function deleteItem() {}
 
-function deleteCategory() {}
+function deleteCategory() {
+  //confirm thing
+}
 
 module.exports = {
   showFood,
