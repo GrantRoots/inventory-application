@@ -7,6 +7,9 @@
   </head>
   <body>
     <h1>Welcome to my general store!</h1>
-    <%= categories.forEach((category) => {}) %>
+    <% categories.forEach((category) => { %>
+    <h2><%= category.table_name %></h2>
+    <button>Open <%= category.table_name %></button>
+    <% }) %>
   </body>
 </html>
