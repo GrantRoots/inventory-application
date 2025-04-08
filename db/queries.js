@@ -13,6 +13,10 @@ async function getAllItems(category) {
   return rows;
 }
 
+async function addItem(category, name, price, description, quantity) {
+  await pool.query("");
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
