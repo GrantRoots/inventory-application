@@ -11,5 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/food", foodRouter);
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send(err.message);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);

@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 
+console.log("Populating db...");
+
 require("dotenv").config();
 const { Client } = require("pg");
-
-console.log("Db populated...");
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS food (
@@ -31,13 +31,13 @@ CREATE TABLE IF NOT EXISTS electronics (
 );
 
 INSERT INTO food (name, price, description, quantity) 
-VALUES  ('apple', 2.00, 'Best apples in the world', 50)
+VALUES  ('apple', 2.00, 'Best apples in the world', 50);
 
 INSERT INTO toys (name, price, description, quantity) 
-VALUES  ('Toy Car', 40.00, 'Toy racecar', 10)
+VALUES  ('Toy Car', 40.00, 'Toy racecar', 10);
 
 INSERT INTO electronics (name, price, description, quantity) 
-VALUES  ('Xbox', 300.00, 'Xbox series S - NEW', 5)
+VALUES  ('Xbox', 300.00, 'Xbox series S - NEW', 5);
 `;
 
 const ROLE_NAME = process.env.ROLE_NAME;

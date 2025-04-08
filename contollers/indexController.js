@@ -1,6 +1,7 @@
 const db = require("../db/queries");
 
-function showCategories(req, res) {
+async function showCategories(req, res) {
+  const categories = await db.getAllCategories();
   res.render("index", { categories: categories });
 }
 
