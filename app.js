@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
-const foodRouter = require("./routes/foodRouter");
+const categoryRouter = require("./routes/categoryRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
-app.use("/food", foodRouter);
+app.use("/:category", categoryRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

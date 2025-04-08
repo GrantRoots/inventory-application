@@ -6,15 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Food</h1>
-    <% food.forEach((item) => { %>
+    <h1><%= title %></h1>
+    <% items.forEach((item) => { %>
     <h2><%= item.name %></h2>
     <div><%= item.price %></div>
     <div><%= item.description %></div>
     <div><%= item.quantity %></div>
     <% }) %>
     <div>
-      <button>Add ite</button>
+      <a href="/add"><button>Add Item</button></a>
     </div>
   </body>
 </html>

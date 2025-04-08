@@ -8,6 +8,7 @@ async function getAllCategories() {
 }
 
 async function getAllItems(category) {
+  console.log("category", category);
   const { rows } = await pool.query(`SELECT * FROM ${category}`);
   return rows;
 }
