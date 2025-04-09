@@ -66,7 +66,7 @@ if (ENV === "dev") {
   const DATABASE_NAME = process.env.DATABASE_NAME;
   async function main() {
     const client = new Client({
-      connectionString: `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}`,
+      connectionString: `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?sslmode=require`,
     });
     await client.connect();
     await client.query(SQL);
