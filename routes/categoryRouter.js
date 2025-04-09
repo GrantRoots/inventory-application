@@ -3,8 +3,9 @@ const categoryRouter = express.Router({ mergeParams: true });
 const categoryController = require("../contollers/categoryController");
 
 categoryRouter.get("/", categoryController.showAllItems);
-categoryRouter.get("/add", categoryController.showForm);
+categoryRouter.get("/add", categoryController.showFormAdd);
 categoryRouter.post("/add", categoryController.addItem);
 categoryRouter.post("/delete", categoryController.deleteItem);
+categoryRouter.get("/update", categoryController.showFormUpdate);
 
 module.exports = categoryRouter;

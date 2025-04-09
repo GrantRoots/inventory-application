@@ -20,8 +20,12 @@
       <input type="hidden" name="name" value="<%= item.name %>" />
       <button type="submit">Delete Item</button>
     </form>
-    <button>Update</button>
+    <a
+      href="/<%= title %>/update?name=<%= item.name %>&price=<%= item.price %>&description=<%= item.description %>&quantity=<%= item.quantity %>"
+      ><button>Update</button></a
+    >
     <% }) %>
+    <h1></h1>
     <div>
       <a href="/<%= title %>/add"><button>Add Item</button></a>
       <a href="/"><Button>Home</Button></a>

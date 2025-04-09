@@ -7,8 +7,11 @@ async function showAllItems(req, res) {
   res.render("items", { items: items, title: category });
 }
 
-function showForm(req, res) {
-  res.render("addItem", { category: req.params.category });
+function showFormAdd(req, res) {
+  res.render("addOrUpdateItem", {
+    category: req.params.category,
+    formAction: "add",
+  });
 }
 
 const validateItem = [
@@ -28,7 +31,7 @@ const addItem = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       console.log(errors.array());
-      return res.status(400).render("addItem", {
+      return res.status(400).render("addOrUpdateItem", {
         category: req.params.category,
         errors: errors.array(),
       });
@@ -51,14 +54,32 @@ async function deleteItem(req, res) {
   res.redirect(`/${category}`);
 }
 
+function showFormUpdate(req, res) {
+  const values = {
+    name: req.query.name,
+    price: req.query.price,
+    description: req.query.description,
+    quantity: req.query.quantity,
+  };
+  res.render("addOrUpdateItem", {
+    category: req.params.category,
+    formAction: "update",
+    values: values,
+  });
+}
+
+async function updateItem(req, res) {}
+
 function deleteCategory() {
   //confirm thing
 }
 
 module.exports = {
   showAllItems,
-  showForm,
+  showFormAdd,
+  showFormUpdate,
   addItem,
   deleteItem,
+  updateItem,
   deleteCategory,
 };
