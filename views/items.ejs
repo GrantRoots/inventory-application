@@ -28,6 +28,13 @@
     <h1></h1>
     <div>
       <a href="/<%= title %>/add"><button>Add Item</button></a>
+      <form
+        action="/<%= title %>/deletecategory"
+        method="post"
+        onsubmit="return confirm('Are you sure?')"
+      >
+        <button>Delete Category (WARNING CANNOT UNDO!)</button>
+      </form>
       <a href="/"><Button>Home</Button></a>
     </div>
   </body>

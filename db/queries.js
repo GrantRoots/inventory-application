@@ -32,7 +32,9 @@ async function updateItem(category, name, price, description, quantity) {
   );
 }
 
-async function deleteCategory(category) {}
+async function deleteCategory(category) {
+  await pool.query(`DROP TABLE ${category};`);
+}
 
 module.exports = {
   getAllCategories,

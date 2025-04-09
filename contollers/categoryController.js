@@ -91,8 +91,10 @@ const updateItem = [
   },
 ];
 
-function deleteCategory() {
-  //confirm thing
+async function deleteCategory(req, res) {
+  const category = req.params.category;
+  await db.deleteCategory(category);
+  res.redirect("/");
 }
 
 module.exports = {
