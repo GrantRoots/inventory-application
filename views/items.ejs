@@ -12,6 +12,14 @@
     <div>Price: $<%= item.price %></div>
     <div>Description: <%= item.description %></div>
     <div>Quantity: <%= item.quantity %></div>
+    <form
+      action="/<%= title %>/delete"
+      method="post"
+      onsubmit="return confirm('Are you sure?')"
+    >
+      <input type="hidden" name="name" value="<%= item.name %>" />
+      <button type="submit">Delete Item</button>
+    </form>
     <button>Update</button>
     <% }) %>
     <div>

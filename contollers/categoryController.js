@@ -8,8 +8,7 @@ async function showAllItems(req, res) {
 }
 
 function showForm(req, res) {
-  const category = req.params.category;
-  res.render("addItem", { category: category });
+  res.render("addItem", { category: req.params.category });
 }
 
 const validateItem = [
@@ -46,7 +45,11 @@ const addItem = [
   },
 ];
 
-function deleteItem() {}
+async function deleteItem(req, res) {
+  const category = req.params.category;
+  await db.deleteItem(category, req.body.name);
+  res.redirect(`/${category}`);
+}
 
 function deleteCategory() {
   //confirm thing

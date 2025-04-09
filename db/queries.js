@@ -21,8 +21,16 @@ async function addItem(category, name, price, description, quantity) {
   );
 }
 
+async function deleteItem(category, name) {
+  await pool.query(`DELETE FROM ${category} WHERE name = '${name}';`);
+}
+
+async function deleteCategory(category) {}
+
 module.exports = {
   getAllCategories,
   getAllItems,
   addItem,
+  deleteItem,
+  deleteCategory,
 };
