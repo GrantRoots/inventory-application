@@ -24,6 +24,14 @@ async function deleteItem(category, name) {
   await pool.query(`DELETE FROM ${category} WHERE name = '${name}';`);
 }
 
+async function updateItem(category, name, price, description, quantity) {
+  const values = [name, price, description, quantity];
+  await pool.query(
+    `UPDATE ${category} SET name = $1, price = $2, description = $3, quantity = $4 WHERE name = $1;`,
+    values
+  );
+}
+
 async function deleteCategory(category) {}
 
 module.exports = {
@@ -31,5 +39,6 @@ module.exports = {
   getAllItems,
   addItem,
   deleteItem,
+  updateItem,
   deleteCategory,
 };

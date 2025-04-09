@@ -7,5 +7,6 @@ categoryRouter.get("/add", categoryController.showFormAdd);
 categoryRouter.post("/add", categoryController.addItem);
 categoryRouter.post("/delete", categoryController.deleteItem);
 categoryRouter.get("/update", categoryController.showFormUpdate);
+categoryRouter.post("/update", categoryController.updateItem);
 
 module.exports = categoryRouter;

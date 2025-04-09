@@ -29,14 +29,14 @@ const addItem = [
   validateItem,
   async (req, res) => {
     const errors = validationResult(req);
+    const category = req.params.category;
     if (!errors.isEmpty()) {
       console.log(errors.array());
       return res.status(400).render("addOrUpdateItem", {
-        category: req.params.category,
+        category: category,
         errors: errors.array(),
       });
     }
-    const category = req.params.category;
     await db.addItem(
       category,
       req.body.name,
@@ -68,7 +68,28 @@ function showFormUpdate(req, res) {
   });
 }
 
-async function updateItem(req, res) {}
+const updateItem = [
+  validateItem,
+  async (req, res) => {
+    const errors = validationResult(req);
+    const category = req.params.category;
+    if (!errors.isEmpty()) {
+      console.log(errors.array());
+      return res.status(400).render("addOrUpdateItem", {
+        category: category,
+        errors: errors.array(),
+      });
+    }
+    await db.updateItem(
+      category,
+      req.body.name,
+      req.body.price,
+      req.body.description,
+      req.body.quantity
+    );
+    res.redirect(`/${category}`);
+  },
+];
 
 function deleteCategory() {
   //confirm thing
