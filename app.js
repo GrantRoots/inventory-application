@@ -8,6 +8,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 app.use("/", indexRouter);
 app.use("/:category", categoryRouter);
 

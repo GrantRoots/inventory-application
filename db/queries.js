@@ -14,10 +14,15 @@ async function getAllItems(category) {
 }
 
 async function addItem(category, name, price, description, quantity) {
-  await pool.query("");
+  const values = [name, price, description, quantity];
+  await pool.query(
+    `INSERT INTO ${category} (name, price, description, quantity) VALUES($1, $2, $3, $4);`,
+    values
+  );
 }
 
 module.exports = {
   getAllCategories,
   getAllItems,
+  addItem,
 };
