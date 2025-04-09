@@ -46,14 +46,31 @@ VALUES  ('Xbox', 300.00, 'Xbox series S - NEW', 5),
 ('Drone', 600.00, 'Flys 1000ft in the air - use with percaution', 1);
 `;
 
-const ROLE_NAME = process.env.ROLE_NAME;
-const ROLE_PASSWORD = process.env.ROLE_PASSWORD;
-async function main() {
-  const client = new Client({
-    connectionString: `postgresql://${ROLE_NAME}:${ROLE_PASSWORD}@localhost:5432/inventory`,
-  });
-  await client.connect();
-  await client.query(SQL);
-  await client.end();
+const ENV = process.env.ENV || null;
+if (ENV === "dev") {
+  const ROLE_NAME = process.env.ROLE_NAME;
+  const ROLE_PASSWORD = process.env.ROLE_PASSWORD;
+  async function main() {
+    const client = new Client({
+      connectionString: `postgresql://${ROLE_NAME}:${ROLE_PASSWORD}@localhost:5432/inventory`,
+    });
+    await client.connect();
+    await client.query(SQL);
+    await client.end();
+  }
+  main();
+} else {
+  const DATABASE_HOST = process.env.DATABASE_HOST;
+  const DATABASE_USER = process.env.DATABASE_USER;
+  const DATABASE_PASSWORD = process.env.DATABASE_PASSWORD;
+  const DATABASE_NAME = process.env.DATABASE_NAME;
+  async function main() {
+    const client = new Client({
+      connectionString: `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}`,
+    });
+    await client.connect();
+    await client.query(SQL);
+    await client.end();
+  }
+  main();
 }
-main();
