@@ -11,6 +11,7 @@ function showFormAdd(req, res) {
   res.render("addOrUpdateItem", {
     category: req.params.category,
     formAction: "add",
+    values: {},
   });
 }
 
